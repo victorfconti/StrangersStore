@@ -128,6 +128,14 @@ namespace NerdStore.core.DomainObjects
             }
         }
 
+        public static void ValidarSeMenorIgualQue(decimal valor, decimal minimo, string mensagem)
+        {
+            if (valor <= minimo)
+            {
+                throw new DomainException(mensagem);
+            }
+        }
+
         public static void ValidarSeMenorQue(int valor, int minimo, string mensagem)
         {
             if (valor < minimo)

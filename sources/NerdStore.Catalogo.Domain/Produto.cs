@@ -15,8 +15,10 @@ namespace NerdStore.Catalogo.Domain
         public string Imagem {get; private set; }
         public int QuantidadeEstoque {get; private set; }
         public Categoria Categoria { get; private set; }
-
-        public Produto(string nome, string descricao, bool ativo, decimal valor, Guid categoriaId, DateTime dataCadastro, string imagem)
+        
+        public Dimensoes Dimensoes { get; private set; }
+        
+        public Produto(string nome, string descricao, bool ativo, decimal valor, Guid categoriaId, DateTime dataCadastro, string imagem, Dimensoes dimensoes)
         {
             CategoriaId = categoriaId;
             Nome = nome;
@@ -25,7 +27,7 @@ namespace NerdStore.Catalogo.Domain
             Valor = valor;
             DataCadastro = dataCadastro;
             Imagem = imagem;
-
+            Dimensoes = dimensoes;  
             Validar();
         }
 
@@ -69,16 +71,5 @@ namespace NerdStore.Catalogo.Domain
             AssertionConcern.ValidarSeVazio(Imagem, "O campo Imagem do produto não pode estar vazio");
         }
 
-    }
-
-    public class Categoria : Entity
-    {
-        public string Nome { get; private set; }
-        public int Codigo { get; private set; }
-
-        public override string ToString()
-        {
-            return $"{Nome} - {Codigo}";
-        }
     }
 }
